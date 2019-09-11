@@ -1,36 +1,29 @@
 import React, { Component } from "react";
-import AllTasks from "./allTasks";
-class Tasks extends Component {
+import AllTasks from "./AllTasks";
+
+class MainBody extends Component {
   state = {
     tasks: [],
     completedTasks: [],
     isLoading: true
   };
-  constructor(props) {
-    super();
-    this.onSubmit = this.onSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleDeleteCompletedTasks = this.handleDeleteCompletedTasks.bind(
-      this
-    );
-  }
-  fetchCompletedTasks(){
+  fetchCompletedTasks=()=>{
     fetch("http://localhost:8080/Taskscompleted")
     .then(response => response.json())
     .then(data =>
       this.setState({ completedTasks: data, isLoading: false })
     );
   }
-  fetchInProgresTasks(){
+  fetchInProgresTasks=()=>{
     fetch("http://localhost:8080/Tasksinprogress")
     .then(response => response.json())
     .then(data => this.setState({ tasks: data, isLoading: false }));
   }
-  componentDidMount() {
+  componentDidMount(){
     this.fetchInProgresTasks();
     this.fetchCompletedTasks();
   }
-  handleDelete(task) {
+  handleDelete=(task)=> {
     task.name = "c";
     fetch("http://localhost:8080/Tasks/${task.id}", {
       method: "PUT",
@@ -48,8 +41,7 @@ class Tasks extends Component {
       });
     });
   }
-
-  handleDeleteCompletedTasks(task) {
+  handleDeleteCompletedTasks=(task)=> {
     fetch(`http://localhost:8080/Tasks/${task.id}`, {
       method: "DELETE",
       headers: {
@@ -66,7 +58,6 @@ class Tasks extends Component {
       });
     });
   }
-
   uuidv4 = () => {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
       var r = (Math.random() * 16) | 0,
@@ -74,7 +65,7 @@ class Tasks extends Component {
       return v.toString(16);
     });
   };
-  onSubmit(event) {
+  onSubmit=(event)=> {
     event.preventDefault();
     if (this.refs.taskInput.value) {
       let tasks = [...this.state.tasks];
@@ -133,4 +124,4 @@ class Tasks extends Component {
   }
 }
 
-export default Tasks;
+export default MainBody;

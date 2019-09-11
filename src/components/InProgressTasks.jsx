@@ -1,8 +1,8 @@
 import React from "react";
-import Task from "./task";
-function InProgressTasks(props) {
+import Task from "./Task";
 
-  function renderInProgressTasks () {
+function InProgressTasks(props) {
+  function renderInProgressTasks() {
     if (props.tasks.length === 0) {
       return <p>no tasks to do !!!!!</p>;
     } else {
@@ -16,19 +16,21 @@ function InProgressTasks(props) {
         </div>
       ));
     }
-  };
-  function onDragStart (e, task) {
+  }
+  function onDragStart(e, task) {
     var taskInJson = JSON.stringify(task);
     e.dataTransfer.setData("task", taskInJson);
-  };
- 
-    return (
-      <div>
-        InProgressTasks
-        {renderInProgressTasks()}
-      </div>
-    );
+  }
   
+  return (
+    <div>
+      <p>
+        <b>InProgress</b>
+      </p>
+      <hr></hr>
+      {renderInProgressTasks()}
+    </div>
+  );
 }
 
 export default InProgressTasks;

@@ -1,6 +1,7 @@
 import React from "react";
-import CompltedTasks from "./completedtasks";
-import InProgressTasks from "./inProgressTasks";
+import CompletedTasks from "./Completedtasks";
+import InProgressTasks from "./InProgressTasks";
+
 function AllTasks(props) {
   return (
     <div className="row">
@@ -12,7 +13,7 @@ function AllTasks(props) {
         />
       </div>
       <div className="col-sm-6">
-        <CompltedTasks
+        <CompletedTasks
           completedTasks={props.completedTasks}
           setCompletedTasks={props.setCompletedTasks}
           onDeleteCompleted={props.onDeleteCompleted}

@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import Navbar from "./components/navabar";
-import Tasks from "./components/tasks.jsx";
+import Navbar from "./components/Navabar";
+import MainBody from "./components/MainBody.jsx";
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Tasks />
+      <MainBody />
     </div>
   );
 }

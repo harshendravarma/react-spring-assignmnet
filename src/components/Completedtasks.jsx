@@ -1,5 +1,5 @@
 import React from "react";
-import Task from "./task";
+import Task from "./Task";
 function CompletedTasks(props) {
   function onDragOver(e) {
     e.preventDefault();
@@ -34,7 +34,8 @@ function CompletedTasks(props) {
 
   return (
     <div>
-      completed tasks
+      <p><b>Completed</b></p>
+      <hr></hr>
       {renderCompletedTasks()}
     </div>
   );
